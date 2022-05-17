@@ -1,0 +1,300 @@
+:root {
+--blanco: #ffffff;
+--oscuro: #212121;
+--primario: #ffc107;
+--secundario: #0097a7;
+--gris: #757575;
+--gris-claro: #DFE9F3;
+
+
+
+}
+/* Globales*/
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+}
+*, *::before, *::after{box-sizing: inherit;}  /* Snippet para tener una mejor adaptacion de pixeles*/
+
+body{
+/* 1rem=10px este hace que un rem valga 2 px junto con el anterior son hacks para el box model*/
+    font-size: 16px;
+    font-family: 'Krub', sans-serif;
+    background-image: linear-gradient(to top, var(--gris-claro) 0%, var(--blanco) 100% );/* Para dar degrade a un color de fondo*/ 
+    /* !!SE PUEDE CONSEGUIR CODIGOS DE DEGRADADO EN LA PAGINA CSSMATIC*/
+     }
+
+.contenedor {
+    max-width: 120rem;
+margin-top: 0;
+margin-right: auto;
+margin-bottom: 0;
+margin-left: auto;
+
+}
+.boton {
+    background-color: var(--secundario);
+    color: var(--blanco);
+    padding: 1rem 3rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: .5rem;
+    width: 90%;
+    text-align: center;
+    border: none;
+}
+@media (min-width: 480px) {
+    .boton {
+        width: auto;
+
+    }
+.boton:hover{
+    cursor: pointer;
+}
+    
+}
+.sombra {
+    -webkit-caja-sombra: 0px 5px 15px 0px rgba(0,0,0,0.54);/* webkit y moz caja sombra ya no son necesarios desde 2011, solo con box-shadow se puede crear una caja*/
+    -moz-caja-sombra: 0px 5px 15px 0px rgba(0,0,0,0.54);
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.54);
+    background-color: var(--blanco);
+    padding: 2rem;
+    border-radius: 1rem;
+
+}
+
+
+/* Tipografia*/
+
+
+h1 {
+    font-size: 3.8rem;
+
+}
+h2 {
+    font-size: 2.8rem;
+
+}
+h3{ 
+    font-size: 1.8rem;
+} 
+h1,h2,h3 {
+    text-align: center;
+}
+/* titulos */
+.titulo 
+    { 
+    color : var(--oscuro);
+    text-transform :uppercase; 
+    } 
+.titulo span {
+ font-size: 2rem; 
+ color: var(--oscuro);
+ font-family: 'Krub', sans-serif; 
+ 
+}
+
+
+
+/*utilidad*/
+.w-100{
+    width: 100%;
+}
+@media (min-width:768px ) {
+    .w-100{
+        width: auto;
+    }
+} 
+.alinear-derecha{
+justify-content: flex-end;
+}
+.flex{
+    display: flex;
+}
+/* Navegacion-principal*/
+
+.nav-bg {
+    background-color: var(--secundario);
+}
+.navegacion-principal {
+  
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+    @media (min-width: 768px) {
+        .navegacion-principal 
+        {   flex-direction: row;
+            justify-content: space-between;
+
+        }
+        
+        
+    } 
+.navegacion-principal a { 
+   color: var(--blanco);
+text-decoration: none;
+font-size: 2rem;
+font-weight: 700;
+padding-top: 1rem;
+}
+.navegacion-principal a:hover {
+    background-color: var(--primario);
+    color: var(--oscuro);
+    border-radius: 10%;
+
+}
+/* Hero */
+.hero {
+background-image: url(../img/hero.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+height: 450px;
+position: relative;
+margin-bottom: 2rem; /* este es para que tenga 20px desde la imagen de hero para abajo asi la shadow box queda separada*/ 
+}
+.contenido-hero {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.contenido-hero h2,
+.contenido-hero p {
+    color: var(--blanco);
+}
+.ubicacion {
+    display: flex;
+    align-items: flex-end;
+    
+}
+
+
+.servicios,.navegacion-principal, .formulario{
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+/** Servicios **/
+
+@media (min-width: 768px) { 
+    .servicios {
+        display: grid; /** CSS grid seria esto, en css grid se puede alinear elementos tanto de arriba abajo como de a¿bajo arriba dentro de una misma seccion cosa que no se puede hacer con flex box**/
+        grid-template-columns: repeat(3 , 1fr); /** Hay una version corta , en la que primero van los "grid-template-rows" (sus valores) / "grid-template-columns"(sus valores)
+        /**tambien el grid se puede dividir en culumnas por fracciones 1fr 1fr 1fr , son tres fracciones de un entero, o directamente poner "repeat: (3, 1fr);" y cada fraccion va a valer
+        33.3% de un entero osea del 100%.**/
+        column-gap: 1rem; /** este se usa para marcar la separacion que van a tener entre columnas**/
+
+        
+    
+    }
+    
+} .servicio {
+ display: flex;/**habilita a lops elementos de izquierda a derecha**/
+ flex-direction: column;
+ align-items: center;
+
+}
+.servicio h3{
+color: var(--secundario);
+font-weight: 400;
+
+}
+.servicio p{
+    line-height: 2; /** este valor define el interlineado en un texto**/
+}
+
+.servicio .iconos { 
+    height: 15rem;/**mismo alto por altura forma un cuadrado, si a eso le agregas border radius de 50% se forma un circulo**/
+    width: 15rem;
+    background-color: var(--primario);
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center; /**este comando permite alinear verticalmente**/
+}
+.formulario {
+    background-color: var(--gris);
+    width: min(60rem, 100%);
+    margin: 0 auto;
+    padding: 2rem;
+    border-radius: 2rem;
+    -webkit-box-shadow: 32px 28px 25px -25px rgba(117,117,117,1);
+    -moz-box-shadow: 32px 28px 25px -25px rgba(117,117,117,1);
+    box-shadow: 32px 28px 25px -25px rgba(117,117,117,1);
+
+}
+.formulario fieldset{
+    border:none;
+}
+.formulario legend{
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: var(--primario);
+}
+fieldset{ 
+    border-radius: 2rem;
+    
+}
+@media (min-width: 780px) {
+    .contenedor-campos{
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: auto auto 20rem;
+        column-gap: 1rem;
+    }
+
+    
+    .campo:nth-child(4),.campor:nth-child(3){
+        grid-column: 1 / 3;
+        grid-row: 3/4;
+    }
+    
+
+} 
+
+.campo{
+    margin-bottom: 1rem;
+}
+.campo label{
+    color:var(--blanco);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.campo textarea{
+    height: 10rem;
+
+    
+}
+
+
+.input-text{
+    width: 100%;
+    border: none;
+    padding: 1.5rem;
+    border-radius: .5rem;
+
+}
+.enviar .boton{
+    width: 100%;
+    
+}
+.enviar{
+    margin-top: 1rem;
+}
+/*Footer*/
+footer{
+    text-align: center;
+}
